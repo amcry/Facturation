@@ -9,6 +9,7 @@ public class LigneFacture {
     private int qteProduit;
     // private double prixTotalTTCProduit;
     private Produit produit;
+    private int compteur = 0;
 
     public LigneFacture(Produit produit, int qteProduit) {
         this.produit = produit;
@@ -29,6 +30,10 @@ public class LigneFacture {
         produit.afficherProduit();
         System.out.println("quantité produit : " + qteProduit);
 
+    }
+
+    public int getQuantiteProduit() {
+        return qteProduit;
     }
 
 }

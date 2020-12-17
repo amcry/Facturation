@@ -9,7 +9,7 @@ public class Facture {
 
     private int idFacture;
     private LocalDate date;
-    private List<LigneFacture> produits = new ArrayList<>();
+    private List<LigneFacture> ligneProduits = new ArrayList<>();
     private Produit produitNom;
 
     public Facture(int idFacture, LocalDate date) {
@@ -17,9 +17,9 @@ public class Facture {
         this.date = date;
     }
 
-    public int calculerPrixTotal() {
+    public int calculerPrixTotalTTC() {
         int prixTotalTTC = 0;
-        for (LigneFacture produit : produits) {
+        for (LigneFacture produit : ligneProduits) {
             prixTotalTTC += produit.getPrixTTCParQuantite();
         }
         return prixTotalTTC;
@@ -27,28 +27,46 @@ public class Facture {
 
     public int calculerPrixTotalHT() {
         int prixTotalHT = 0;
-        for (LigneFacture produit : produits) {
+        for (LigneFacture produit : ligneProduits) {
             prixTotalHT += produit.getPrixHTParQuantite();
         }
         return prixTotalHT;
     }
 
     public void ajouterProduit(LigneFacture produit) {
-        produits.add(produit);
+        ligneProduits.add(produit);
     }
 
-    public void retirerProduit(LigneFacture produit) {
-        produits.remove(produit);
+    public void supprimerProduit(LigneFacture produit) {
+        ligneProduits.remove(produit);
     }
 
     public void afficheListe() {
-        for (LigneFacture produit : produits) {
+        for (LigneFacture produit : ligneProduits) {
             produit.afficherLigneFacture();
 
             System.out.println("\n");
         }
         System.out.println("prix total HT :" + calculerPrixTotalHT());
-        System.out.println("prix total TTC :" + calculerPrixTotal());
+        System.out.println("prix total TTC :" + calculerPrixTotalTTC());
 
     }
+
+    public int getNbLigneProduits() {
+        int compteur = 0;
+        for (LigneFacture ligneproduit : ligneProduits) {
+            compteur++;
+        }
+        return compteur;
+
+    }
+
+    public int getNbProduitTotal() {
+        int produitTotal = 0;
+        for (LigneFacture ligneProduit : ligneProduits) {
+            produitTotal += ligneProduit.getQuantiteProduit();
+        }
+        return produitTotal;
+    }
+
 }

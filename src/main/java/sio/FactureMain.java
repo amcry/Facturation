@@ -11,9 +11,9 @@ public class FactureMain {
         int prixHT = 100;
         int prixHT2 = 200;
         int prixHT3 = 50;
-        Produit p = new Produit("1", "produit", prixHT, tva);
-        Produit p2 = new Produit("2", "produit2", prixHT2, tva2);
-        Produit p3 = new Produit("3", "produit3", prixHT3, tva3);
+        Produit p = new Produit("1", "KIWI", prixHT, tva);
+        Produit p2 = new Produit("2", "LAVE LINGE", prixHT2, tva2);
+        Produit p3 = new Produit("3", "CLASSEUR", prixHT3, tva3);
         LigneFacture produit = new LigneFacture(p, 3);
         LigneFacture produit2 = new LigneFacture(p2, 1);
         LigneFacture produit3 = new LigneFacture(p3, 2);
